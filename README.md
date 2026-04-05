@@ -1,4 +1,4 @@
-# Ramy 6-DOF 3D Printed Robotic Arm
+# 6-DOF 3D Printed Robotic Arm - Ramy
 
 ![Status: Functional Prototype](https://img.shields.io/badge/Status-Functional_Prototype-brightgreen)
 ![Platform: Fusion 360](https://img.shields.io/badge/CAD-Fusion_360-blue)
@@ -15,6 +15,8 @@ This repository documents the assembly, build process, and programming of a 6 De
     <img src="https://img.youtube.com/vi/tcOHtl4LamA/maxresdefault.jpg" alt="Watch the video" width="600" />
   </a>
 </p>
+
+Check the Media folder to see more photos with the fully assembled Robotic Arm.
 
 ## About the Project
 The 3D printed parts are based on an excellent open-source model found on [MakerWorld](https://makerworld.com/en/models/2466519-3d-robotic-arm?from=search). To better understand the kinematics and prepare for the programming phase, I imported and fully assembled the components in **Autodesk Fusion 360**, where I also conducted a motion study.
