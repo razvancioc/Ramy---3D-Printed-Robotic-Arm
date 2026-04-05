@@ -97,56 +97,57 @@ $(function(){initNavTree('index.html','',''); });
 <p align="center"></p>
 <p><b>📖 Full Doxygen Documentation: <a href="https://razvancioc.github.io/Ramy-3D-Printed-Robotic-Arm/">Click here to see</a></b> </p>
 <p align="center"></p>
-<p>&lt;a href="https://youtube.com/shorts/tcOHtl4LamA&gt;
-    &lt;img src="<a href="https://youtube.com/shorts/tcOHtl4LamA">https://youtube.com/shorts/tcOHtl4LamA</a>" alt="Watch the video" width="600" /&gt;
-  &lt;/a&gt;
-&lt;/p&gt;
-
-@section autotoc_md1 About the Project
-The 3D printed parts are based on an excellent open-source model found on &lt;a href="<a href="https://makerworld.com/en/models/2466519-3d-robotic-arm?from=search">https://makerworld.com/en/models/2466519-3d-robotic-arm?from=search</a>" &gt;MakerWorld&lt;/a&gt;. To better understand the kinematics and prepare for the programming phase, I imported and fully assembled the components in &lt;strong&gt;Autodesk Fusion 360&lt;/strong&gt;, where I also conducted a motion study.
-
-@section autotoc_md2 Motion Study &amp; Kinematics
-Before starting the physical assembly, I validated the joint limits and basic movements using a Motion Study in Fusion 360. This ensures the mechanical design can achieve the required range of motion without collisions.
-
-&lt;p align="center"&gt;
-  &lt;img src="<a href="https://raw.githubusercontent.com/razvancioc/Ramy-3D-Printed-Robotic-Arm/main/Media/motion_study-ezgif.com-gif-maker.gif">https://raw.githubusercontent.com/razvancioc/Ramy-3D-Printed-Robotic-Arm/main/Media/motion_study-ezgif.com-gif-maker.gif</a>" alt="Robotic Arm Motion Study" width="600" /&gt;
-&lt;/p&gt;
-
-@section autotoc_md3 Current Status
-- [x] 3D printing of mechanical components.
-- [x] Virtual assembly in Fusion 360 &amp; Kinematic simulation.
-- [x] Physical mechanical assembly and wiring.
-- [x] &lt;strong&gt;Core control code written and tested (ESP32 + PCA9685).&lt;/strong&gt;
-- [ ] &lt;em&gt;Pending:&lt;/em&gt; Design and 3D print a custom enclosure to route cables and house the control electronics cleanly.
-- [ ] &lt;em&gt;Pending:&lt;/em&gt; Implement Inverse Kinematics (IK) math models.
-
-@section autotoc_md4 Hardware (Bill of Materials)
-* &lt;strong&gt;3D Printed Parts:&lt;/strong&gt; PLA/PETG (30% infill recommended for rigidity)
-* &lt;strong&gt;Actuators:&lt;/strong&gt; 3 x &lt;strong&gt;MG995&lt;/strong&gt; (180-degree) &amp; 3 x MG90 MICRO
-* &lt;strong&gt;Microcontroller:&lt;/strong&gt; ESP32 Development Board
-* &lt;strong&gt;Servo Controller:&lt;/strong&gt; I2C PCA9685
-* &lt;strong&gt;Position Control:&lt;/strong&gt; 3 x XY Joystick Modules
-
-@subsection autotoc_md5 Hardware Schematic
-
-&lt;p align="center"&gt;
-  &lt;img src="<a href="https://github.com/user-attachments/assets/6eb6785e-4bef-4326-b2a8-eec25f9a681f.png">https://github.com/user-attachments/assets/6eb6785e-4bef-4326-b2a8-eec25f9a681f.png</a>" alt="Electrical Schematic" width="800" /&gt;
-&lt;/p&gt;
-
-@section autotoc_md6 Software
-The control software is written in &lt;strong&gt;C++&lt;/strong&gt; using PlatformIO/Arduino framework. It utilizes the &lt;tt&gt;Adafruit_PWMServoDriver&lt;/tt&gt; library to offload PWM generation to the PCA9685 module over I2C. The current logic features a robust incremental movement system with adjustable speeds, hardware constraint mapping, and joystick deadzones to prevent jittering.
-
-@section autotoc_md7 Hardware Challenges &amp; Lessons Learned
-
-@subsection autotoc_md8 The 360° vs. 180° Servo Motor Issue
-During the initial prototyping and testing phase of the robotic arm, an unexpected behavior was observed: the joints would rotate continuously at varying speeds instead of holding a specific targeted angle. When the joystick was released to its center position, the motors would not stop accurately.
-
-&lt;strong&gt;The Root Cause:&lt;/strong&gt;
-The issue was traced back to the hardware type. The project inadvertently used &lt;strong&gt;360-degree continuous rotation servos&lt;/strong&gt; (MG996R 360°) instead of &lt;strong&gt;180-degree positional servos&lt;/strong&gt;. Because it was difficult to source the 180° variant of the MG996R locally, I pivoted to the &lt;strong&gt;MG995&lt;/strong&gt; model.
-
-The fundamental difference lies in the internal feedback loop:
-* &lt;strong&gt;Standard 180° Servo (MG995):&lt;/strong&gt; Contains an internal potentiometer. The ESP32 PWM signal dictates the &lt;strong&gt;absolute position&lt;/strong&gt; (e.g., go to 90° and lock there). This is mandatory for a robotic arm to hold objects against gravity.
-* &lt;strong&gt;Continuous 360° Servo:&lt;/strong&gt; The potentiometer is removed or replaced with fixed resistors. The PWM signal dictates &lt;strong&gt;speed and direction&lt;/strong&gt; instead of position. Thus, a "center" signal might cause a slow drift, and the system has no way of knowing the physical angle of the arm.</p>
+<p><a href="https://youtu.be/tcOHtl4LamA"><img src="https://img.youtube.com/vi/tcOHtl4LamA/maxresdefault.jpg" alt="Watch the video" width="600" class="inline"/> </a> </p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
+About the Project</h1>
+<p>The 3D printed parts are based on an excellent open-source model found on <a href="https://makerworld.com/en/models/2466519-3d-robotic-arm?from=search">MakerWorld</a>. To better understand the kinematics and prepare for the programming phase, I imported and fully assembled the components in <b>Autodesk Fusion 360</b>, where I also conducted a motion study.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+Motion Study &amp; Kinematics</h1>
+<p>Before starting the physical assembly, I validated the joint limits and basic movements using a Motion Study in Fusion 360. This ensures the mechanical design can achieve the required range of motion without collisions.</p>
+<p><img src="https://raw.githubusercontent.com/razvancioc/Ramy-3D-Printed-Robotic-Arm/main/Media/motion_study-ezgif.com-gif-maker.gif" alt="Robotic Arm Motion Study" width="600" class="inline"/> </p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+Current Status</h1>
+<ul class="check">
+<li class="checked">3D printing of mechanical components.</li>
+</ul>
+<ul class="check">
+<li class="checked">Virtual assembly in Fusion 360 &amp; Kinematic simulation.</li>
+</ul>
+<ul class="check">
+<li class="checked">Physical mechanical assembly and wiring.</li>
+</ul>
+<ul class="check">
+<li class="checked"><b>Core control code written and tested (ESP32 + PCA9685).</b></li>
+<li class="unchecked"><em>Pending:</em> Design and 3D print a custom enclosure to route cables and house the control electronics cleanly.</li>
+</ul>
+<ul class="check">
+<li class="unchecked"><em>Pending:</em> Implement Inverse Kinematics (IK) math models.</li>
+</ul>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
+Hardware (Bill of Materials)</h1>
+<ul>
+<li><b>3D Printed Parts:</b> PLA/PETG (30% infill recommended for rigidity)</li>
+<li><b>Actuators:</b> 3 x <b>MG995</b> (180-degree) &amp; 3 x MG90 MICRO</li>
+<li><b>Microcontroller:</b> ESP32 Development Board</li>
+<li><b>Servo Controller:</b> I2C PCA9685</li>
+<li><b>Position Control:</b> 3 x XY Joystick Modules</li>
+</ul>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+Hardware Schematic</h2>
+<p><img src="https://github.com/user-attachments/assets/6eb6785e-4bef-4326-b2a8-eec25f9a681f" alt="Electrical Schematic" width="800" class="inline"/> </p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+Software</h1>
+<p>The control software is written in <b>C++</b> using PlatformIO/Arduino framework. It utilizes the <span class="tt">Adafruit_PWMServoDriver</span> library to offload PWM generation to the PCA9685 module over I2C. The current logic features a robust incremental movement system with adjustable speeds, hardware constraint mapping, and joystick deadzones to prevent jittering.</p>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+Hardware Challenges &amp; Lessons Learned</h1>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+The 360° vs. 180° Servo Motor Issue</h2>
+<p>During the initial prototyping and testing phase of the robotic arm, an unexpected behavior was observed: the joints would rotate continuously at varying speeds instead of holding a specific targeted angle. When the joystick was released to its center position, the motors would not stop accurately.</p>
+<p><b>The Root Cause:</b> The issue was traced back to the hardware type. The project inadvertently used <b>360-degree continuous rotation servos</b> (MG996R 360°) instead of <b>180-degree positional servos</b>. Because it was difficult to source the 180° variant of the MG996R locally, I pivoted to the <b>MG995</b> model.</p>
+<p>The fundamental difference lies in the internal feedback loop:</p><ul>
+<li><b>Standard 180° Servo (MG995):</b> Contains an internal potentiometer. The ESP32 PWM signal dictates the <b>absolute position</b> (e.g., go to 90° and lock there). This is mandatory for a robotic arm to hold objects against gravity.</li>
+<li><b>Continuous 360° Servo:</b> The potentiometer is removed or replaced with fixed resistors. The PWM signal dictates <b>speed and direction</b> instead of position. Thus, a "center" signal might cause a slow drift, and the system has no way of knowing the physical angle of the arm.</li>
+</ul>
 <p><b>The Solution:</b> All base actuators were audited and replaced with true <b>180-degree MG995 positional servos</b>. This hardware correction, combined with an incremental control logic in the ESP32 code, allowed the robotic arm to accurately track inputs and firmly hold its position when idle.</p>
 <h1 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
 Future Plans: Electronics Enclosure</h1>

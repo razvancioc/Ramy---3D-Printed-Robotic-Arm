@@ -11,8 +11,8 @@ This repository documents the assembly, build process, and programming of a 6 De
 </p>
 
 <p align="center">
-  <a href="https://youtube.com/shorts/tcOHtl4LamA>
-    <img src="https://youtube.com/shorts/tcOHtl4LamA" alt="Watch the video" width="600" />
+  <a href="https://youtu.be/tcOHtl4LamA">
+    <img src="https://img.youtube.com/vi/tcOHtl4LamA/maxresdefault.jpg" alt="Watch the video" width="600" />
   </a>
 </p>
 
@@ -44,7 +44,7 @@ Before starting the physical assembly, I validated the joint limits and basic mo
 ### Hardware Schematic
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/6eb6785e-4bef-4326-b2a8-eec25f9a681f.png" alt="Electrical Schematic" width="800" />
+  <img src="https://github.com/user-attachments/assets/6eb6785e-4bef-4326-b2a8-eec25f9a681f" alt="Electrical Schematic" width="800" />
 </p>
 
 ## Software
